@@ -1,0 +1,1 @@
+TARGET_URL = "https://www.respublica.ru/knigi/psihologiya/589049-ivanova-m-iskusstvo-vnutrenney-svobody-zhivi-po-svoim-pravilam-t-o"
