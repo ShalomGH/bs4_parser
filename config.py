@@ -1,1 +1,0 @@
-TARGET_URL = "https://www.chipdip.ru/product/ku208g1"
