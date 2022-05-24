@@ -32,6 +32,7 @@ if __name__ == '__main__':
           f'(2) - Выборка из стандартного ввода\n')
     FROM_FILE = int(input())
     if FROM_FILE == 1:
+        errs = 0
         file_check()
         for link in get_links('links.txt'):
             frame.loc[len(frame.index)] = parser(link)
