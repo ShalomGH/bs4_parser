@@ -1,5 +1,15 @@
 from parser import parser
 import pandas as pd
+import os
+
+
+def file_check():
+    file = 'links.txt'
+    if not os.path.exists(file):
+        with open(file, mode='a'):
+            print('Вставьте ссылки в links.txt')
+            pass
+        exit(0)
 
 
 def get_links(filename: str):
@@ -17,9 +27,12 @@ frame = pd.DataFrame(data)
 
 
 if __name__ == '__main__':
-    print('Выберите:\n(1) - Выборка из файла "links.txt"\n(2) - Выборка из стандартного ввода')
-    FROM_FILE = input()
+    print(f'Выберите:\n'
+          f'(1) - Выборка из файла "links.txt"\n'
+          f'(2) - Выборка из стандартного ввода\n')
+    FROM_FILE = int(input())
     if FROM_FILE == 1:
+        file_check()
         for link in get_links('links.txt'):
             frame.loc[len(frame.index)] = parser(link)
         print(frame)
