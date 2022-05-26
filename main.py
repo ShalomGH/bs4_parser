@@ -1,3 +1,5 @@
+import requests
+
 from parser import parser
 import pandas as pd
 import os
@@ -25,7 +27,6 @@ data = {'art': [],
         'cost': []}
 frame = pd.DataFrame(data)
 
-
 if __name__ == '__main__':
     print(f'Выберите:\n'
           f'(1) - Выборка из файла "links.txt"\n'
@@ -42,7 +43,11 @@ if __name__ == '__main__':
             print('Введите ссылку на продукт')
             try:
                 link = input()
+                if link == '1':
+                    break
                 frame.loc[len(frame.index)] = parser(link)
                 print(frame)
-            except:
-                print('Try again\n')
+                print('Для завершения введите 1')
+            except requests.exceptions.MissingSchema:
+                print('Ссылка невалидна\n')
+    frame.to_csv('output.csv')
